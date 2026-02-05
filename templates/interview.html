@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TechCompass-Mock Interview</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
+
+<link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+
+<link rel="manifest" href="/static/site.webmanifest">
+
+</head>
+<body>
+
+<div class="container">
+
+    <!-- NAV BAR -->
+
+    <nav class="nav-bar">
+        <a href="/" class="nav-btn">🏠 Home</a>
+        <a href="/roadmap" class="nav-btn">🧭 Roadmap</a>
+        <a href="/study" class="nav-btn">📚 Study Plan</a>
+        <a href="/resume" class="nav-btn">📄 Resume</a>
+        <a href="/chat" class="nav-btn">💬 Chat</a>
+    </nav>
+
+    <h1>🧭 TechCompass</h1>
+    <p class="subtitle">AI-Powered — Mock Interview</p>
+
+    <!-- FORM -->
+<form method="POST" class="interview-form">
+
+    {% if not output %}
+    <!-- START INTERVIEW -->
+    <input type="text" name="role" placeholder="Role (e.g. Java Developer)" required>
+    <input type="text" name="level" placeholder="Experience (e.g. Fresher, 2 years)" required>
+    <button type="submit" name="start">🎬 Start Interview</button>
+
+    {% else %}
+    <!-- ANSWER QUESTION -->
+    <textarea
+        name="answer"
+        id="answer"
+        placeholder="Type or speak your answer..."
+        rows="4"
+        required></textarea>
+
+    <div class="btn-row">
+        <button type="button" onclick="startVoice()">🎙 Speak</button>
+        <button type="submit">Send Answer</button>
+    </div>
+    {% endif %}
+
+</form>
+
+
+    <!-- AI OUTPUT -->
+    {% if output %}
+    <div class="output-card">
+        <h2>🧠 Interviewer</h2>
+
+        <div class="output-box" id="ai-output">
+            {{ output | safe }}
+        </div>
+
+        <button type="button" onclick="speakAI()" class="voice-btn">
+            🔊 Hear Interviewer
+        </button>
+    </div>
+    {% endif %}
+
+</div>
+
+<script src="/static/interview.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tech Compass-Roadmap Generator</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
+
+<link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+
+<link rel="manifest" href="/static/site.webmanifest">
+
+</head>
+<body>
+
+  
+<div class="container">
+    <nav class="nav-bar">
+  <a href="/" class="nav-btn">🏠 Home</a>
+  <a href="/study" class="nav-btn">📚 Study Plan</a>
+  <a href="/resume" class="nav-btn">📄 Resume Analyzer</a>
+  <a href="/interview" class="nav-btn">🧠 Mock Interview</a>
+  <a href="/chat" class="nav-btn">💬 Chat</a>
+</nav>
+    <h1>🧭 TechCompass</h1>
+    <p class="subtitle">AI-Powered Career Roadmap Generator</p>
+
+    <form method="POST">
+        <input type="text" name="goal" placeholder="Enter your goal (e.g. Software Developer, AI Engineer)" required>
+        <button type="submit">Generate Roadmap 🚀</button>
+    </form>
+
+    {% if output %}
+    <div class="output-card">
+        <h2>📌 Your Personalized Roadmap</h2>
+        <div class="output-box">
+            {{ output | safe }}
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
